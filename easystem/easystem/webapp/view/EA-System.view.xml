@@ -1,0 +1,11 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="ea.easystem.controller.EA-System" displayBlock="true">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <List noDataText="Drop list items here" id="list0" items="{path:'/EA_System',filters:[{path:'vendor',operator:'Contains',value1:''},{path:'s4Prio',operator:'EQ',value1:1}],sorter:[{path:'vendor',descending:false}]}">
+                <items>
+                    <StandardListItem type="Navigation" title="{SystemID}" description="{Systeme}" icon="sap-icon://picture" id="item0" activeIcon="sap-icon://activate" fieldGroupIds="{ID}{Status}"/>
+                </items>
+            </List>
+        </content>
+    </Page>
+</mvc:View>

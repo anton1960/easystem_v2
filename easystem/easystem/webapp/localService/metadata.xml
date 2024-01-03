@@ -1,0 +1,1555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="SystemOdataService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="System" EntityType="SystemOdataService.System"/>
+                <EntitySet Name="SystemInterface" EntityType="SystemOdataService.SystemInterface"/>
+                <EntitySet Name="EA_System" EntityType="SystemOdataService.EA_System"/>
+                <EntitySet Name="EA_System_Interface" EntityType="SystemOdataService.EA_System_Interface"/>
+                <EntitySet Name="EA_Data_Group" EntityType="SystemOdataService.EA_Data_Group"/>
+                <EntitySet Name="EA_System_Group" EntityType="SystemOdataService.EA_System_Group"/>
+                <EntitySet Name="EA_System_Data" EntityType="SystemOdataService.EA_System_Data"/>
+                <EntitySet Name="EA_System_Process_Relation" EntityType="SystemOdataService.EA_System_Process_Relation"/>
+                <EntitySet Name="LOV_Classes" EntityType="SystemOdataService.LOV_Classes"/>
+                <EntitySet Name="LOV_Area" EntityType="SystemOdataService.LOV_Area"/>
+                <EntitySet Name="LOV_Data_Type" EntityType="SystemOdataService.LOV_Data_Type"/>
+                <EntitySet Name="LOV_Division" EntityType="SystemOdataService.LOV_Division"/>
+                <EntitySet Name="LOV_Domain" EntityType="SystemOdataService.LOV_Domain"/>
+                <EntitySet Name="LOV_E2E_Process" EntityType="SystemOdataService.LOV_E2E_Process"/>
+                <EntitySet Name="LOV_Franke_Site" EntityType="SystemOdataService.LOV_Franke_Site"/>
+                <EntitySet Name="LOV_Interface" EntityType="SystemOdataService.LOV_Interface"/>
+                <EntitySet Name="LOV_Categorie" EntityType="SystemOdataService.LOV_Categorie"/>
+                <EntitySet Name="LOV_LOV_Scenario" EntityType="SystemOdataService.LOV_LOV_Scenario"/>
+                <EntitySet Name="LOV_Vendor" EntityType="SystemOdataService.LOV_Vendor"/>
+                <EntitySet Name="EA_Images" EntityType="SystemOdataService.EA_Images"/>
+                <EntitySet Name="LOV_Status" EntityType="SystemOdataService.LOV_Status"/>
+                <EntitySet Name="LOV_Protocoll" EntityType="SystemOdataService.LOV_Protocoll"/>
+                <EntitySet Name="Countries" EntityType="SystemOdataService.Countries"/>
+                <EntitySet Name="LOV_Status_texts" EntityType="SystemOdataService.LOV_Status_texts"/>
+                <EntitySet Name="Countries_texts" EntityType="SystemOdataService.Countries_texts"/>
+                <FunctionImport Name="hello" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="to" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="nocheine" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="to" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="hello2" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="to" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="hello3" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="to" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="migrate" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="to" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="DataChanged" ReturnType="Edm.Int32" m:HttpMethod="GET">
+                    <Parameter Name="to" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="s3List" ReturnType="Edm.String" m:HttpMethod="GET"/>
+                <FunctionImport Name="s3Objects" ReturnType="Edm.Int32" m:HttpMethod="GET"/>
+                <FunctionImport Name="upload" ReturnType="Edm.Int32" m:HttpMethod="POST"/>
+                <AssociationSet Name="SystemInterface_System" Association="SystemOdataService.SystemInterface_System">
+                    <End Role="SystemInterface" EntitySet="SystemInterface"/>
+                    <End Role="System" EntitySet="System"/>
+                </AssociationSet>
+                <AssociationSet Name="EA_System_systemInterface" Association="SystemOdataService.EA_System_systemInterface">
+                    <End Role="EA_System" EntitySet="EA_System"/>
+                    <End Role="EA_System_Interface" EntitySet="EA_System_Interface"/>
+                </AssociationSet>
+                <AssociationSet Name="EA_System_status" Association="SystemOdataService.EA_System_status">
+                    <End Role="EA_System" EntitySet="EA_System"/>
+                    <End Role="LOV_Status" EntitySet="LOV_Status"/>
+                </AssociationSet>
+                <AssociationSet Name="EA_System_system_group" Association="SystemOdataService.EA_System_system_group">
+                    <End Role="EA_System" EntitySet="EA_System"/>
+                    <End Role="EA_System_Group" EntitySet="EA_System_Group"/>
+                </AssociationSet>
+                <AssociationSet Name="EA_System_Interface_System_Source" Association="SystemOdataService.EA_System_Interface_System_Source">
+                    <End Role="EA_System_Interface" EntitySet="EA_System_Interface"/>
+                    <End Role="EA_System" EntitySet="EA_System"/>
+                </AssociationSet>
+                <AssociationSet Name="EA_System_Interface_System_MiddleWare" Association="SystemOdataService.EA_System_Interface_System_MiddleWare">
+                    <End Role="EA_System_Interface" EntitySet="EA_System_Interface"/>
+                    <End Role="EA_System" EntitySet="EA_System"/>
+                </AssociationSet>
+                <AssociationSet Name="EA_System_Interface_System_MiddleWare1" Association="SystemOdataService.EA_System_Interface_System_MiddleWare1">
+                    <End Role="EA_System_Interface" EntitySet="EA_System_Interface"/>
+                    <End Role="EA_System" EntitySet="EA_System"/>
+                </AssociationSet>
+                <AssociationSet Name="EA_System_Interface_System_Destiantion" Association="SystemOdataService.EA_System_Interface_System_Destiantion">
+                    <End Role="EA_System_Interface" EntitySet="EA_System_Interface"/>
+                    <End Role="EA_System" EntitySet="EA_System"/>
+                </AssociationSet>
+                <AssociationSet Name="EA_System_Group_status" Association="SystemOdataService.EA_System_Group_status">
+                    <End Role="EA_System_Group" EntitySet="EA_System_Group"/>
+                    <End Role="LOV_Status" EntitySet="LOV_Status"/>
+                </AssociationSet>
+                <AssociationSet Name="LOV_Vendor_Country" Association="SystemOdataService.LOV_Vendor_Country">
+                    <End Role="LOV_Vendor" EntitySet="LOV_Vendor"/>
+                    <End Role="Countries" EntitySet="Countries"/>
+                </AssociationSet>
+                <AssociationSet Name="LOV_Vendor_status" Association="SystemOdataService.LOV_Vendor_status">
+                    <End Role="LOV_Vendor" EntitySet="LOV_Vendor"/>
+                    <End Role="LOV_Status" EntitySet="LOV_Status"/>
+                </AssociationSet>
+                <AssociationSet Name="EA_Images_systems" Association="SystemOdataService.EA_Images_systems">
+                    <End Role="EA_Images" EntitySet="EA_Images"/>
+                    <End Role="EA_System" EntitySet="EA_System"/>
+                </AssociationSet>
+                <AssociationSet Name="EA_Images_interfaces" Association="SystemOdataService.EA_Images_interfaces">
+                    <End Role="EA_Images" EntitySet="EA_Images"/>
+                    <End Role="EA_System_Interface" EntitySet="EA_System_Interface"/>
+                </AssociationSet>
+                <AssociationSet Name="LOV_Status_texts_1" Association="SystemOdataService.LOV_Status_texts_1">
+                    <End Role="LOV_Status" EntitySet="LOV_Status"/>
+                    <End Role="LOV_Status_texts" EntitySet="LOV_Status_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="LOV_Status_localized" Association="SystemOdataService.LOV_Status_localized">
+                    <End Role="LOV_Status" EntitySet="LOV_Status"/>
+                    <End Role="LOV_Status_texts" EntitySet="LOV_Status_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="Countries_texts_1" Association="SystemOdataService.Countries_texts_1">
+                    <End Role="Countries" EntitySet="Countries"/>
+                    <End Role="Countries_texts" EntitySet="Countries_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="Countries_localized" Association="SystemOdataService.Countries_localized">
+                    <End Role="Countries" EntitySet="Countries"/>
+                    <End Role="Countries_texts" EntitySet="Countries_texts"/>
+                </AssociationSet>
+            </EntityContainer>
+            <EntityType Name="System">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Systemdid" Type="Edm.String"/>
+                <Property Name="systemname" Type="Edm.String"/>
+                <Property Name="amount" Type="Edm.Int32"/>
+                <Property Name="owner" Type="Edm.String"/>
+                <Property Name="f1" Type="Edm.String"/>
+                <Property Name="f2" Type="Edm.String"/>
+                <Property Name="f3" Type="Edm.String"/>
+                <NavigationProperty Name="systemInterface" Relationship="SystemOdataService.SystemInterface_System" FromRole="System" ToRole="SystemInterface"/>
+            </EntityType>
+            <EntityType Name="SystemInterface">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="systemId"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="systemId" Type="Edm.Int32" Nullable="false"/>
+                <NavigationProperty Name="System" Relationship="SystemOdataService.SystemInterface_System" FromRole="SystemInterface" ToRole="System"/>
+                <Property Name="System_ID" Type="Edm.Int32"/>
+                <Property Name="SystemInterfaceID" Type="Edm.Int32"/>
+                <Property Name="systemInterfaceName" Type="Edm.String"/>
+                <Property Name="amount" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="EA_System">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="SystemID" Type="Edm.String"/>
+                <Property Name="Systeme" Type="Edm.String"/>
+                <Property Name="SystemDomain" Type="Edm.String"/>
+                <Property Name="System_Group" Type="Edm.String"/>
+                <Property Name="SystemShortName" Type="Edm.String"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="s4Prio" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="vendor" Type="Edm.String" MaxLength="20"/>
+                <NavigationProperty Name="systemInterface" Relationship="SystemOdataService.EA_System_systemInterface" FromRole="EA_System" ToRole="EA_System_Interface"/>
+                <NavigationProperty Name="status" Relationship="SystemOdataService.EA_System_status" FromRole="EA_System" ToRole="LOV_Status"/>
+                <Property Name="status_code" Type="Edm.String"/>
+                <NavigationProperty Name="images" Relationship="SystemOdataService.EA_Images_systems" FromRole="EA_System" ToRole="EA_Images"/>
+                <NavigationProperty Name="system_group" Relationship="SystemOdataService.EA_System_system_group" FromRole="EA_System" ToRole="EA_System_Group"/>
+                <Property Name="system_group_ID" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="EA_System_Interface">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="SystemIDRef" Type="Edm.Int32"/>
+                <Property Name="SSTID" Type="Edm.String"/>
+                <Property Name="SSTDescription" Type="Edm.String"/>
+                <Property Name="SSTShortDescription" Type="Edm.String"/>
+                <Property Name="SSTMiddleWare" Type="Edm.String"/>
+                <Property Name="SSTSource" Type="Edm.String"/>
+                <NavigationProperty Name="System_Source" Relationship="SystemOdataService.EA_System_Interface_System_Source" FromRole="EA_System_Interface" ToRole="EA_System"/>
+                <Property Name="System_Source_ID" Type="Edm.Int32"/>
+                <NavigationProperty Name="System_MiddleWare" Relationship="SystemOdataService.EA_System_Interface_System_MiddleWare" FromRole="EA_System_Interface" ToRole="EA_System"/>
+                <Property Name="System_MiddleWare_ID" Type="Edm.Int32"/>
+                <NavigationProperty Name="System_MiddleWare1" Relationship="SystemOdataService.EA_System_Interface_System_MiddleWare1" FromRole="EA_System_Interface" ToRole="EA_System"/>
+                <Property Name="System_MiddleWare1_ID" Type="Edm.Int32"/>
+                <NavigationProperty Name="System_Destiantion" Relationship="SystemOdataService.EA_System_Interface_System_Destiantion" FromRole="EA_System_Interface" ToRole="EA_System"/>
+                <Property Name="System_Destiantion_ID" Type="Edm.Int32"/>
+                <Property Name="SSTContext" Type="Edm.String"/>
+                <Property Name="Category" Type="Edm.String"/>
+                <Property Name="ResponsibleBusiness" Type="Edm.String"/>
+                <Property Name="ResponsibleArchitect" Type="Edm.String"/>
+                <Property Name="Responsible_Dev" Type="Edm.String"/>
+                <Property Name="SupplierSpoc" Type="Edm.String"/>
+                <Property Name="Technology" Type="Edm.String"/>
+                <Property Name="KindOfTransfer" Type="Edm.String"/>
+                <Property Name="DataProtokol" Type="Edm.String"/>
+                <Property Name="SSTClass" Type="Edm.String"/>
+                <Property Name="Fallback" Type="Edm.String"/>
+                <Property Name="ConnectDetai" Type="Edm.String"/>
+                <Property Name="CC_Vhost_T" Type="Edm.String"/>
+                <Property Name="CC_Vhost_P" Type="Edm.String"/>
+                <Property Name="CC_Destination" Type="Edm.String"/>
+                <Property Name="Server_Name" Type="Edm.String"/>
+                <Property Name="URL_P" Type="Edm.String"/>
+                <Property Name="URL_T" Type="Edm.String"/>
+                <Property Name="SM_59_T" Type="Edm.String"/>
+                <Property Name="SM_59_P" Type="Edm.String"/>
+                <Property Name="config_file" Type="Edm.String"/>
+                <Property Name="Area" Type="Edm.String"/>
+                <NavigationProperty Name="images" Relationship="SystemOdataService.EA_Images_interfaces" FromRole="EA_System_Interface" ToRole="EA_Images"/>
+            </EntityType>
+            <EntityType Name="EA_Data_Group">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Data_Group" Type="Edm.String"/>
+                <Property Name="Description" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="EA_System_Group">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="System_Group" Type="Edm.String"/>
+                <Property Name="Description" Type="Edm.String"/>
+                <NavigationProperty Name="status" Relationship="SystemOdataService.EA_System_Group_status" FromRole="EA_System_Group" ToRole="LOV_Status"/>
+                <Property Name="status_code" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="EA_System_Data">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Datatype" Type="Edm.String"/>
+                <Property Name="EA_Data_Group" Type="Edm.String"/>
+                <Property Name="Description" Type="Edm.String"/>
+                <Property Name="EA_Data_Group1" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="EA_System_Process_Relation">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="SystemID" Type="Edm.Int32"/>
+                <Property Name="ProcessID" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="LOV_Classes">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Instruction" Type="Edm.String"/>
+                <Property Name="DesCription" Type="Edm.String"/>
+                <Property Name="ClassID" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="LOV_Area">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Aerea" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="LOV_Data_Type">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="DataType" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="LOV_Division">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Division" Type="Edm.String"/>
+                <Property Name="Description" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="LOV_Domain">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Domain" Type="Edm.String"/>
+                <Property Name="Description" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="LOV_E2E_Process">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Process" Type="Edm.String"/>
+                <Property Name="Description" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="LOV_Franke_Site">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Process" Type="Edm.String"/>
+                <Property Name="Description" Type="Edm.String"/>
+                <Property Name="DevisionID" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="LOV_Interface">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="InterfaceType" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="LOV_Categorie">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Category" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="LOV_LOV_Scenario">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Scenario" Type="Edm.String"/>
+                <Property Name="Descripttion" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="LOV_Vendor">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Vendor" Type="Edm.String"/>
+                <Property Name="Name" Type="Edm.String"/>
+                <Property Name="Name1" Type="Edm.String"/>
+                <Property Name="Zip" Type="Edm.String"/>
+                <Property Name="Street" Type="Edm.String"/>
+                <NavigationProperty Name="Country" Relationship="SystemOdataService.LOV_Vendor_Country" FromRole="LOV_Vendor" ToRole="Countries"/>
+                <Property Name="Country_code" Type="Edm.String" MaxLength="3"/>
+                <Property Name="City" Type="Edm.String"/>
+                <NavigationProperty Name="status" Relationship="SystemOdataService.LOV_Vendor_status" FromRole="LOV_Vendor" ToRole="LOV_Status"/>
+                <Property Name="status_code" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="EA_Images" m:HasStream="true">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <NavigationProperty Name="systems" Relationship="SystemOdataService.EA_Images_systems" FromRole="EA_Images" ToRole="EA_System"/>
+                <Property Name="systems_ID" Type="Edm.Int32"/>
+                <NavigationProperty Name="interfaces" Relationship="SystemOdataService.EA_Images_interfaces" FromRole="EA_Images" ToRole="EA_System_Interface"/>
+                <Property Name="interfaces_ID" Type="Edm.Int32"/>
+                <Property Name="Type" Type="Edm.Int32"/>
+                <Property Name="RefID" Type="Edm.Int32"/>
+                <Property Name="SystemID" Type="Edm.String"/>
+                <Property Name="FileName" Type="Edm.String"/>
+                <Property Name="url" Type="Edm.String"/>
+                <Property Name="size" Type="Edm.Int32"/>
+                <Property Name="Description" Type="Edm.String"/>
+                <Property Name="mediaType" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="LOV_Status">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" Nullable="false"/>
+                <Property Name="criticality" Type="Edm.Int32"/>
+                <Property Name="ID" Type="Edm.Int32"/>
+                <NavigationProperty Name="texts" Relationship="SystemOdataService.LOV_Status_texts_1" FromRole="LOV_Status" ToRole="LOV_Status_texts"/>
+                <NavigationProperty Name="localized" Relationship="SystemOdataService.LOV_Status_localized" FromRole="LOV_Status" ToRole="LOV_Status_texts"/>
+            </EntityType>
+            <EntityType Name="LOV_Protocoll">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="protocoll" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Countries">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <NavigationProperty Name="texts" Relationship="SystemOdataService.Countries_texts_1" FromRole="Countries" ToRole="Countries_texts"/>
+                <NavigationProperty Name="localized" Relationship="SystemOdataService.Countries_localized" FromRole="Countries" ToRole="Countries_texts"/>
+            </EntityType>
+            <EntityType Name="LOV_Status_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="Countries_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+            </EntityType>
+            <Association Name="SystemInterface_System">
+                <End Role="SystemInterface" Type="SystemOdataService.SystemInterface" Multiplicity="*"/>
+                <End Role="System" Type="SystemOdataService.System" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="System">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="SystemInterface">
+                        <PropertyRef Name="System_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EA_System_systemInterface">
+                <End Role="EA_System" Type="SystemOdataService.EA_System" Multiplicity="*"/>
+                <End Role="EA_System_Interface" Type="SystemOdataService.EA_System_Interface" Multiplicity="*"/>
+            </Association>
+            <Association Name="EA_System_status">
+                <End Role="EA_System" Type="SystemOdataService.EA_System" Multiplicity="*"/>
+                <End Role="LOV_Status" Type="SystemOdataService.LOV_Status" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="LOV_Status">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="EA_System">
+                        <PropertyRef Name="status_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EA_System_system_group">
+                <End Role="EA_System" Type="SystemOdataService.EA_System" Multiplicity="*"/>
+                <End Role="EA_System_Group" Type="SystemOdataService.EA_System_Group" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="EA_System_Group">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="EA_System">
+                        <PropertyRef Name="system_group_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EA_System_Interface_System_Source">
+                <End Role="EA_System_Interface" Type="SystemOdataService.EA_System_Interface" Multiplicity="*"/>
+                <End Role="EA_System" Type="SystemOdataService.EA_System" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="EA_System">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="EA_System_Interface">
+                        <PropertyRef Name="System_Source_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EA_System_Interface_System_MiddleWare">
+                <End Role="EA_System_Interface" Type="SystemOdataService.EA_System_Interface" Multiplicity="*"/>
+                <End Role="EA_System" Type="SystemOdataService.EA_System" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="EA_System">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="EA_System_Interface">
+                        <PropertyRef Name="System_MiddleWare_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EA_System_Interface_System_MiddleWare1">
+                <End Role="EA_System_Interface" Type="SystemOdataService.EA_System_Interface" Multiplicity="*"/>
+                <End Role="EA_System" Type="SystemOdataService.EA_System" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="EA_System">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="EA_System_Interface">
+                        <PropertyRef Name="System_MiddleWare1_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EA_System_Interface_System_Destiantion">
+                <End Role="EA_System_Interface" Type="SystemOdataService.EA_System_Interface" Multiplicity="*"/>
+                <End Role="EA_System" Type="SystemOdataService.EA_System" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="EA_System">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="EA_System_Interface">
+                        <PropertyRef Name="System_Destiantion_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EA_System_Group_status">
+                <End Role="EA_System_Group" Type="SystemOdataService.EA_System_Group" Multiplicity="*"/>
+                <End Role="LOV_Status" Type="SystemOdataService.LOV_Status" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="LOV_Status">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="EA_System_Group">
+                        <PropertyRef Name="status_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="LOV_Vendor_Country">
+                <End Role="LOV_Vendor" Type="SystemOdataService.LOV_Vendor" Multiplicity="*"/>
+                <End Role="Countries" Type="SystemOdataService.Countries" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Countries">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="LOV_Vendor">
+                        <PropertyRef Name="Country_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="LOV_Vendor_status">
+                <End Role="LOV_Vendor" Type="SystemOdataService.LOV_Vendor" Multiplicity="*"/>
+                <End Role="LOV_Status" Type="SystemOdataService.LOV_Status" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="LOV_Status">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="LOV_Vendor">
+                        <PropertyRef Name="status_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EA_Images_systems">
+                <End Role="EA_Images" Type="SystemOdataService.EA_Images" Multiplicity="*"/>
+                <End Role="EA_System" Type="SystemOdataService.EA_System" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="EA_System">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="EA_Images">
+                        <PropertyRef Name="systems_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EA_Images_interfaces">
+                <End Role="EA_Images" Type="SystemOdataService.EA_Images" Multiplicity="*"/>
+                <End Role="EA_System_Interface" Type="SystemOdataService.EA_System_Interface" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="EA_System_Interface">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="EA_Images">
+                        <PropertyRef Name="interfaces_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="LOV_Status_texts_1">
+                <End Role="LOV_Status" Type="SystemOdataService.LOV_Status" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="LOV_Status_texts" Type="SystemOdataService.LOV_Status_texts" Multiplicity="*"/>
+            </Association>
+            <Association Name="LOV_Status_localized">
+                <End Role="LOV_Status" Type="SystemOdataService.LOV_Status" Multiplicity="*"/>
+                <End Role="LOV_Status_texts" Type="SystemOdataService.LOV_Status_texts" Multiplicity="0..1"/>
+            </Association>
+            <Association Name="Countries_texts_1">
+                <End Role="Countries" Type="SystemOdataService.Countries" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="Countries_texts" Type="SystemOdataService.Countries_texts" Multiplicity="*"/>
+            </Association>
+            <Association Name="Countries_localized">
+                <End Role="Countries" Type="SystemOdataService.Countries" Multiplicity="*"/>
+                <End Role="Countries_texts" Type="SystemOdataService.Countries_texts" Multiplicity="0..1"/>
+            </Association>
+            <Annotations Target="SystemOdataService.System/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.System/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.System/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.System/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.SystemInterface/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.SystemInterface/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.SystemInterface/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.SystemInterface/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="System"/>
+                        <PropertyValue Property="TypeNamePlural" String="Systems"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="ID"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="SystemID"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ID</PropertyPath>
+                        <PropertyPath>SystemShortName</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ID"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SystemShortName"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="System Info"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Main"/>
+                                        <PropertyValue Property="Label" String="Main Facet"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Main">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SystemdID"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SystemShortName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System/SystemDomain" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Text" Path="EA_SystemDomain/Domain"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="System Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="LOV_Domain"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SystemDomain"/>
+                                    <PropertyValue Property="ValueListProperty" String="Domain"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Description"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System/System_Group" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Text" Path="EA_System_Group/System_Group"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="System Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="EA_System_Group"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="System_Group"/>
+                                    <PropertyValue Property="ValueListProperty" String="System_Group"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Description"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System/Status" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Text" Path="LOV_Status/status"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="System Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="LOV_Status"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Status"/>
+                                    <PropertyValue Property="ValueListProperty" String="status"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="status"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System/vendor" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Vendor (select)"/>
+                <Annotation Term="Common.Text" String="ID"/>
+                <Annotation Term="Common.UI">
+                    <Record>
+                        <PropertyValue Property="TextArrangement" EnumMember="Common.UIType/TextOnly"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="LOV_Vendor"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="vendor"/>
+                                    <PropertyValue Property="ValueListProperty" String="Vendor"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Zip"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country_code"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System/status_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="LOV_Status"/>
+                        <PropertyValue Property="CollectionPath" String="LOV_Status"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="status_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Interface/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Interface/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Interface/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Interface/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_Data_Group/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_Data_Group/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_Data_Group/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_Data_Group/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Group/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Group/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Group/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Group/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Group/status_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="LOV_Status"/>
+                        <PropertyValue Property="CollectionPath" String="LOV_Status"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="status_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Data/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Data/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Data/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Data/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Process_Relation/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Process_Relation/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Process_Relation/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_System_Process_Relation/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Classes/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Classes/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Classes/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Classes/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Area/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Area/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Area/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Area/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Data_Type/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Data_Type/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Data_Type/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Data_Type/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Division/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Division/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Division/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Division/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Domain/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Domain/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Domain/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Domain/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Domain/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Domain_ID"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Domain/Domain" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Domain_Domain"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Domain/Description" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Domain_Description"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_E2E_Process/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_E2E_Process/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_E2E_Process/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_E2E_Process/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Franke_Site/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Franke_Site/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Franke_Site/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Franke_Site/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Interface/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Interface/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Interface/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Interface/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Categorie/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Categorie/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Categorie/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Categorie/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_LOV_Scenario/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_LOV_Scenario/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_LOV_Scenario/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_LOV_Scenario/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ID</PropertyPath>
+                        <PropertyPath>Name</PropertyPath>
+                        <PropertyPath>Name1</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ID"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Name1"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Vendor_ID"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/Vendor" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Vendor_vendor"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/Name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Vendor_Name"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/Name1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Vendor_Name1"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/Zip" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Vendor_zip"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/Street" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Vendor_Street"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/Country" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Vendor_Country"/>
+                <Annotation Term="Core.Description" String="Country/region code as specified by ISO 3166-1"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/Country_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Vendor_Country"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="LOV_Vendor_Country"/>
+                        <PropertyValue Property="CollectionPath" String="Countries"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Country_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Description" String="Country/region code as specified by ISO 3166-1"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/City" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Vendor_City"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/status" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Vendor_status"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Vendor/status_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="LOV_Vendor_status"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="LOV_Vendor_status"/>
+                        <PropertyValue Property="CollectionPath" String="LOV_Status"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="status_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_Images" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.MediaType" Path="mediaType"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_Images/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_Images/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_Images/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_Images/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.EA_Images/mediaType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.IsMediaType" Bool="true"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Status" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Status/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Status/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Status/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CL-Status-Code"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Protocoll/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Protocoll/createdBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Protocoll/modifiedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Protocoll/modifiedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.Countries" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SystemOdataService.Countries/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.Countries/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.Countries/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Text" Path="name"/>
+                <Annotation Term="Common.Label" String="Country/Region Code"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Status_texts/locale" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Language Code"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Status_texts/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Status_texts/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.LOV_Status_texts/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CL-Status-Code"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.Countries_texts/locale" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Language Code"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.Countries_texts/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.Countries_texts/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="SystemOdataService.Countries_texts/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Text" Path="name"/>
+                <Annotation Term="Common.Label" String="Country/Region Code"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,93 @@
+_schema-version: "3.2"
+ID: easystem
+description: easystem
+version: 0.0.1
+modules:
+- name: easystem-dest-content
+  type: com.sap.application.content
+  requires:
+  - name: easystem-destination-service
+    parameters:
+      content-target: true
+  - name: easystem-repo-host
+    parameters:
+      service-key:
+        name: easystem-repo-host-key
+  - name: easystem-uaa
+    parameters:
+      service-key:
+        name: easystem-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: easystem_repo_host
+          ServiceInstanceName: easystem-html5-srv
+          ServiceKeyName: easystem-repo-host-key
+          sap.cloud.service: easystem
+        - Authentication: OAuth2UserTokenExchange
+          Name: easystem_uaa
+          ServiceInstanceName: easystem-xsuaa-srv
+          ServiceKeyName: easystem-uaa-key
+          sap.cloud.service: easystem
+        existing_destinations_policy: update
+  build-parameters:
+    no-source: true
+- name: easystem-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: easystem-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - eaeasystem.zip
+      name: eaeasystem
+      target-path: resources/
+- name: eaeasystem
+  type: html5
+  path: easystem
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: easystem-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: easystem-xsuaa-srv
+    service-plan: application
+- name: easystem-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: easystem-destination-service
+    service-plan: lite
+- name: easystem-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: easystem-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
